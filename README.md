@@ -2,7 +2,7 @@
 
 ## 一、报告简介
 
-> 报告人：Ling G.
+> 报告人：Ling G.  
 > 身份：Microsoft Windows Insider  
 >
 > 接收人：Kayo M.  
