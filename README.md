@@ -2,10 +2,10 @@
 
 ## 一、报告简介
 
-> 报告人：Ling Gao (高楷修)  
+> 报告人：Ling G.
 > 身份：Microsoft Windows Insider  
 >
-> 接收人：Kayo  
+> 接收人：Kayo M.  
 > 身份：Microsoft Engineer  
 >
 > 日期：2020 年 6 月 4 日  
