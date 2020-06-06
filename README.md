@@ -2,6 +2,8 @@
 
 ## I. Introduction
 
+[**中文版本报告 (Chinese Version Report)**](https://github.com/Lingggao/SDIR/blob/master/README_ZH_CN.md#%E7%BC%BA-%E9%99%B7-%E8%B0%83-%E6%9F%A5-%E6%8A%A5-%E5%91%8A)
+
 > From: Ling G.  
 > Title: Microsoft Windows Insider  
 >

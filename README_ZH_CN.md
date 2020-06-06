@@ -2,6 +2,8 @@
 
 ## 一、报告简介
 
+[**English Version Report (英文版本报告)**](https://github.com/Lingggao/SDIR#defect-investigation-report)
+
 > 报告人：Ling G.  
 > 身份：Microsoft Windows Insider  
 >
