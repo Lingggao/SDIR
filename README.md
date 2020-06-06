@@ -1,22 +1,22 @@
-# 缺 陷 调 查 报 告
+# Defect Investigation Report
 
-## 一、报告简介
+## I. Introduction
 
-> 报告人：Ling G.  
-> 身份：Microsoft Windows Insider  
+> From: Ling G.  
+> Title: Microsoft Windows Insider  
 >
-> 接收人：Kayo M.  
-> 身份：Microsoft Engineer  
+> To: Kayo M.  
+> Title: Microsoft Engineer  
 >
-> 日期：2020 年 06 月 05 日  
+> Date: June 5, 2020
 
-## 二、缺陷详情
+## II. Description
 
-在使用 Microsoft 拼音输入法的过程中，当输入某些具体的拼音单词时，输入法候选窗口会意外地突然自动关闭。在候选窗口关闭的状态下，用户无法使用鼠标或数字键盘选择候选词。此时，如果继续输入一个或多个拼音字符的话，候选窗口可以重新出现，用户可以继续输入中文汉字。
+In the use of the Microsoft Pinyin Input Method Editor (IME), the candidate window closes unexpectedly and automatically when some specific Pinyin characters are typed. Users cannot select a candidate character with the cursor or numeric keyboard after the candidate window is closed. If users continue to type one or more Pinyin characters, the candidate window may reappear, and they can proceed to type Chinese characters.
 
-**在我的其中一部 Windows 10 设备中（该设备当前运行 Windows 10 Build 19640.1 版本系统），这一问题的重现成功率为 100%。每当输入某些拼音组合时，输入法候选窗口必定消失。在 Windows 10 系统中的任何位置都可以成功重现此问题，而并非是仅在部分 APP 中才会出现问题。仅部分拼音组合会导致候选窗口消失，其他绝大多数的拼音可以正常输入。重启设备无法暂时或永久性的解决这一问题。**
+**In one of my Windows 10 devices (running Windows 10 Build 19640.1 currently), the problem is 100% reproducible. The IME candidate window disappears whenever some Pinyin combinations are typed. This problem can be reproduced successfully anywhere in the Windows 10 system, but not just in certain Apps. Also, the candidate window only closes when some pinyin combinations are typed, while most pinyin characters can be entered normally. The problem cannot be solved temporarily or permanently by rebooting the device.**
 
-截止至今日（2020 年 6 月 4 日），我共计发现了 9 例可以导致问题重现的拼音组合，分别为：
+Up to now (June 5, 2020), I have found a total of 9 Pinyin combinations that may reproduce the problem:
 
 1. shi ' fou ' an ' zhuan（是否安装）
 2. zhi ' nen（稚嫩）
@@ -28,52 +28,56 @@
 8. liu'  chan（流产）
 9. long ' ming（龙鸣）
 
-**在 “快速” 通道中提供的最新 Windows 预览体验版本 Build 19640 中，上述的 9 例拼音组合并不会全部导致输入法候选窗口消失，前 5 例拼音组合在测试时不会出现任何问题，仅末尾的 4 例拼音组合可以成功重现问题**。
+**In Build 19640, the latest Windows Insider Preview, not all of the above 9 Pinyin combinations, will cause the IME candidate window to disappear. The problem only resurfaces when the last 4 Pinyin combinations are typed, while the first 5 Pinyin combinations will not produce any problems during the test.**
 
-**同时，这一问题无法在所有运行 Windows 10 预览体验版本的设备中成功重现。根据我目前了解到的情况来看，此问题仅在极少一部分设备中才会出现，应属 “罕见” 问题。有关详细信息，请参照下方的 “三、测试工作” 章节。**
+**At the same time, this problem cannot be reproduced successfully in all devices running Windows 10 Insider Preview. As far as I know, it strikes only in a minimal number of devices and should be considered as a rare problem. Please refer to Chapter III. Testing for more information.**
 
-## 三、测试工作
+## III. Testing
 
-为了更全面的针对这一问题开展调查与分析工作，我分别使用了 3 部 Windows 10 设备进行了测试，分别为 XiaoMi Game Laptop 2019、Dell Inspiron 7560 与 Microsoft Surface Go。其中，前 2 部设备运行 Windows 10 Build 19640 版本系统，Surface Go 设备运行 Windows 10 Build 18363 版本。
+To carry out a comprehensive investigation and analysis of this problem, I used three Windows 10 devices for testing, namely Xiaomi Game Laptop 2019, Dell Inspiron 7560, and Microsoft Surface Go. Among them, the first two devices run the Windows 10 Build 19640 system, while Surface Go runs Windows 10 Build 18363.
 
-1. 经过测试发现，在我日常使用的 XiaoMi Game Laptop 2019 设备中（**此设备中安装了多款第三方应用程序，并且运行最新的 Windows 10 预览体验版本**），输入法候选窗口消失的问题**可以成功重现**，详情如下表：
+1. I tested and found that the problem that the IME candidate window disappeared could be reproduced **successfully** in my daily used Xiaomi Game Laptop 2019 device, **which had many third-party applications installed and ran the latest Windows 10 Insider Preview**. The details are described as follows:
 
-|              拼音组合              | XiaoMi Game Laptop 2019 (Windows 预览体验版本 Build 19640) |
-| :--------------------------------: | :--------------------------------------------------------: |
-| shi ' fou ' an ' zhuan（是否安装） |                          一切正常                          |
-|         zhi ' nen（稚嫩）          |                          一切正常                          |
-|        zong ' xian（总线）         |                          一切正常                          |
-|         suo ' pin（锁频）          |                          一切正常                          |
-|         ci ' pang（祠旁）          |                          一切正常                          |
-|         nin ' jin（您今）          |                   **输入法候选窗口消失**                   |
-|         jin ' nian（今年）         |                   **输入法候选窗口消失**                   |
-|         liu'  chan（流产）         |                   **输入法候选窗口消失**                   |
-|        long ' ming（龙鸣）         |                   **输入法候选窗口消失**                   |
+|        Pinyin combinations         |  Xiaomi Game Laptop 2019 (Build 19640)   |
+| :--------------------------------: | :--------------------------------------: |
+| shi ' fou ' an ' zhuan（是否安装） |                  Normal                  |
+|         zhi ' nen（稚嫩）          |                  Normal                  |
+|        zong ' xian（总线）         |                  Normal                  |
+|         suo ' pin（锁频）          |                  Normal                  |
+|         ci ' pang（祠旁）          |                  Normal                  |
+|         nin ' jin（您今）          | **The IME candidate window disappears.** |
+|         jin ' nian（今年）         | **The IME candidate window disappears.** |
+|         liu'  chan（流产）         | **The IME candidate window disappears.** |
+|        long ' ming（龙鸣）         | **The IME candidate window disappears.** |
 
-2. **但是，在同样运行 Windows 10 预览体验版本 Build 19640 的 Dell Inspiron 7560 设备中（本设备完全干净，未安装任何的第三方应用程序），问题无法成功重现，输入任何拼音时输入法候选框均不会消失：**
+2. **However, the problem was irreproducible in Dell Inspiron 7560 that also ran Windows 10 Insider Preview Build 19640, which was an immaculate device without any third-party applications. The IME candidate window did not close whenever pinyin words were typed:**
 
-|              拼音组合              | Dell Inspiron 7560 (Windows 预览体验版本 Build 19640) |
-| :--------------------------------: | :---------------------------------------------------: |
-| shi ' fou ' an ' zhuan（是否安装） |                       一切正常                        |
-|         zhi ' nen（稚嫩）          |                       一切正常                        |
-|        zong ' xian（总线）         |                       一切正常                        |
-|         suo ' pin（锁频）          |                       一切正常                        |
-|         ci ' pang（祠旁）          |                       一切正常                        |
-|         nin ' jin（您今）          |                       一切正常                        |
-|         jin ' nian（今年）         |                       一切正常                        |
-|         liu'  chan（流产）         |                       一切正常                        |
-|        long ' ming（龙鸣）         |                       一切正常                        |
+|        Pinyin combinations         | Dell Inspiron 7560 (Build 19640) |
+| :--------------------------------: | :------------------------------: |
+| shi ' fou ' an ' zhuan（是否安装） |              Normal              |
+|         zhi ' nen（稚嫩）          |              Normal              |
+|        zong ' xian（总线）         |              Normal              |
+|         suo ' pin（锁频）          |              Normal              |
+|         ci ' pang（祠旁）          |              Normal              |
+|         nin ' jin（您今）          |              Normal              |
+|         jin ' nian（今年）         |              Normal              |
+|         liu'  chan（流产）         |              Normal              |
+|        long ' ming（龙鸣）         |              Normal              |
 
-3. 同时，经过测试确认，运行 **Windows 10 正式版本 Build 18363** 的 Microsoft Surface Go 设备同样**无法重现**这一问题，Microsoft 拼音输入法完全可以正常工作。
-4. 我在可以成功重现问题的 XiaoMi Game Laptop 2019 设备中执行了 [**“干净启动”**](https://support.microsoft.com/zh-cn/help/929135/how-to-perform-a-clean-boot-in-windows) 操作，以便确定此问题是否是由于设备中安装的第三方应用程序干扰所导致的。经过测试确认，在 “干净启动” 的状态下，输入法候选窗口仍然会出现突然消失的情况，问题**可以成功重现**。
-5. 我在 XiaoMi Game Laptop 2019 设备中通过 “设置”>“时间和语言”>“语言”>“首选语言” 删除了 Microsoft 拼音输入法，随后重新添加了此输入法。经过测试确认，问题依旧**可以成功重现**。
-6. 我在 XiaoMi Game Laptop 2019 设备中使用 “Dism /Online /Cleanup-Image /ScanHealth” 与 “sfc /SCANNOW” 命令进行了系统组件扫描，2 个命令均**未检测到异常**。
-7. 我在 XiaoMi Game Laptop 2019 设备中新建了一个本地管理员账户，登录了新账户进行了测试。经过测试确认，新账户下**问题不再出现**，Microsoft 拼音输入法可以正常工作，**问题已经得到了解决**。
+3. The problem was also tested and confirmed to be irreproducible in Microsoft Surface Go running the official version of Windows 10 **Build 18363**. **The Microsoft Pinyin IME worked normally.**
 
-## 四、测试结论
+4. I executed “[**Clean Boot**](https://support.microsoft.com/en-us/help/929135/how-to-perform-a-clean-boot-in-windows)” in Xiaomi Game Laptop 2019 that could successfully reproduce the problem to determine whether the problem was caused by the interference of third-party applications installed on the device. After testing and confirmation, the IME candidate window still disappeared unexpectedly in the “Clean Boot” state. Thus, **the problem could be reproduced successfully.**
 
-通过本次测试工作，目前我可以基本认定 “Microsoft 拼音输入法在输入某些拼音时候选窗口会突然消失” 的问题是由于**我的个人设备中的本地账户出现损坏**所导致的，只需新建一个本地账户就可以完全解决此问题。不过，近期我确实也接到了其他几名用户（大概 3 人）有关这一问题的报告，此问题确实影响了一小部分 Windows 用户。
+5. I deleted the Microsoft Pinyin IME via Settings > Time and Language > Language > Preferred Language in Xiaomi Game Laptop 2019, I added the IME again. The problem was tested and confirmed to be still reproducible.
 
-**综上所述，我认为 Microsoft 拼音输入法自身仍然可能存在缺陷。我希望 Microsoft 可以针对这一问题继续保持跟踪，着力于确认 Microsoft 拼音输入法及其相关组件是否存在直接损坏系统本地账户的可能性**。
+6. I scanned the system components using the commands “Dism /Online /Cleanup-Image /ScanHealth” and “SFC /SCANNOW” in Xiaomi Game Laptop 2019 exception was detected.
 
-本次测试工作圆满完成，希望我所编写的缺陷调查报告可以为 Microsoft 工程师们排查问题起到一定的帮助。我衷心感谢 Microsoft 工程师们长久以来的辛勤付出，衷心祝愿大家生活愉快、身体健康！
+7. I created a local administrator account in Xiaomi Game Laptop 2019 and logged in the system with the new account for testing. Upon testing and confirmation, the problem did **not** arise under the new account, and the Microsoft Pinyin IME could operate normally. **The problem was eventually solved.**
+
+## IV. Conclusion
+
+According to the test, I can believe that the problem that “the candidate window suddenly disappears when some Pinyin characters are typed in the use of Microsoft Pinyin IME” is caused by the **damage to the local account on my device**. The problem can be solved satisfactorily by creating a new local account. However, I have recently received reports from other users (about three people) about this issue. 
+
+**In this context, I suspect that the Microsoft Pinyin IME may also have certain defects. In summary, I hope that Microsoft can continue to track this defect and verify whether the Microsoft Pinyin IME and its components may directly damage the local account of the system.**
+
+As the test is completed satisfactorily, I hope that the defect investigation report I prepared may help Microsoft engineers to carry out troubleshooting. I sincerely thank Microsoft engineers for their hard work over the years, and wish everyone a happy life and good health!
